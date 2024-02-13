@@ -34,7 +34,7 @@ export default function Home() {
                 network: "mainnet",
                 modules: [setupMeteorWallet(), setupCoin98Wallet(), setupHereWallet(), setupLedger(), setupNightly()],
             });
-            
+
             setWalletSelector(selector);
         };
 
@@ -43,7 +43,10 @@ export default function Home() {
 
     // Connect Wallet through Modal
     const connectWallet = async () => {
-        const modal = setupModal(walletSelector!, { contractId: "" });
+        if (!walletSelector) {
+            throw new Error("Wallet selector is not initialized");
+        }
+        const modal = setupModal(walletSelector, { contractId: "" });
 
         modal.show();
     };
@@ -51,8 +54,12 @@ export default function Home() {
     // Handle Staking Form Submission
     const handleStake = async (event: FormEvent) => {
         event.preventDefault();
+        if (!walletSelector) {
+            throw new Error("Wallet selector is not initialized");
+        }
+
         const service = new NearProtocolService();
-        const wallet = new NearSelectorWallet(walletSelector!);
+        const wallet = new NearSelectorWallet(walletSelector);
         const rawTx = await service.tx.buildDepositAndStakeTx(wallet, validatorAddress, Number(stakeAmount));
         await wallet.signAndBroadcast(rawTx);
     };
