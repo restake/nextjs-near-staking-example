@@ -71,40 +71,42 @@ export default function Home() {
             </div>
 
             {/* Staking Form */}
-            <form onSubmit={handleStake} className="space-y-4">
-                <div>
-                    <label htmlFor="validatorAddress" className="block text-sm font-medium text-gray-700">
-                      Validator Address
-                    </label>
-                    <input
-                        type="text"
-                        id="validatorAddress"
-                        value={validatorAddress}
-                        onChange={(e) => setValidatorAddress(e.target.value)}
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="stakeAmount" className="block text-sm font-medium text-gray-700">
-                      Stake Amount
-                    </label>
-                    <input
-                        type="text"
-                        id="stakeAmount"
-                        value={stakeAmount}
-                        onChange={(e) => setStakeAmount(e.target.value)}
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                        required
-                    />
-                </div>
-                <button
-                    type="submit"
-                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                >
-                  Stake Now
-                </button>
-            </form>
+            <div className="p-10 shadow-lg rounded-lg">
+                <form onSubmit={handleStake} className="space-y-4">
+                    <div>
+                        <label htmlFor="validatorAddress" className="block text-sm font-medium text-gray-700">
+                        Validator Address
+                        </label>
+                        <input
+                            type="text"
+                            id="validatorAddress"
+                            value={validatorAddress}
+                            onChange={(e) => setValidatorAddress(e.target.value)}
+                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="stakeAmount" className="block text-sm font-medium text-gray-700">
+                        Stake Amount
+                        </label>
+                        <input
+                            type="text"
+                            id="stakeAmount"
+                            value={stakeAmount}
+                            onChange={(e) => setStakeAmount(e.target.value)}
+                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                            required
+                        />
+                    </div>
+                    <button
+                        type="submit"
+                        className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                    >
+                    Stake Now
+                    </button>
+                </form>
+            </div>
         </main>
     );
 }
